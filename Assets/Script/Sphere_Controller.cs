@@ -9,6 +9,7 @@ public class Sphere_Controller : MonoBehaviour
     public float speed;
     Rigidbody rb;
     private static int numar = 0;
+    public TextMeshProUGUI endGameText;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +51,11 @@ public class Sphere_Controller : MonoBehaviour
             if (other.gameObject.CompareTag("Cub Rosu"))
             {
                 speed *= -1;
+            }
+            if(numar == 10)
+            {
+                speed = 0;
+                endGameText.gameObject.SetActive(true);
             }
         }
         
