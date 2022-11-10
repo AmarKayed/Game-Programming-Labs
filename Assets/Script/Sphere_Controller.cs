@@ -47,11 +47,12 @@ public class Sphere_Controller : MonoBehaviour
             Game_Manager.Generate_Cube();
             Destroy(other.gameObject);
             speed = Mathf.Abs(speed);
+            if (other.gameObject.CompareTag("Cub Rosu"))
+            {
+                speed *= -1;
+            }
         }
-        else if(other.gameObject.CompareTag("Cub Rosu"))
-        {
-            speed = -1;
-        }
+        
         //else if (other.gameObject.CompareTag("Cilindru"))
         //{
         //    Debug.Log("Am intrat in cilindru");
