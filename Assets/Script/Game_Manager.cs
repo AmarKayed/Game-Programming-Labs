@@ -56,14 +56,9 @@ public class Game_Manager : MonoBehaviour
     public static void Generate_Cube()
     {
         Vector3 position = Generate_Cube_Position();
-        GameObject cubeInstance = Instantiate(Resources.Load("Cube", typeof(GameObject)), position, Quaternion.identity) as GameObject;
-        if(cubeInstance != null)
-        {
-            Debug.Log("Load Succesfull!");
-        }
-        else
-        {
-            Debug.Log("Nu a aparut >:C");
-        }
+        int probability = Random.Range(0, 3);
+        // Pentru cazuri mai complicate folosim switch  
+        string cubeType = probability == 0 ? "Red Cube" : "Cube";
+        GameObject cubeInstance = Instantiate(Resources.Load(cubeType, typeof(GameObject)), position, Quaternion.identity) as GameObject;
     }
 }

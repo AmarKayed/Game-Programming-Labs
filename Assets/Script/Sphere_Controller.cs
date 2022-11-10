@@ -36,14 +36,21 @@ public class Sphere_Controller : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log("Am atins ceva");
-        if (other.gameObject.CompareTag("Cub"))
+        if (other.gameObject.CompareTag("Cub") || other.gameObject.CompareTag("Cub Rosu"))
         {
             //other.gameObject.SetActive(false);
             //Debug.Log("Am papat un cub");
             numar++;
             Game_Manager.Update_Score(numar);
             //Game_Manager.Generate_Cube();
-            other.transform.position = Game_Manager.Generate_Cube_Position();
+            //other.transform.position = Game_Manager.Generate_Cube_Position();
+            Game_Manager.Generate_Cube();
+            Destroy(other.gameObject);
+            speed = Mathf.Abs(speed);
+        }
+        else if(other.gameObject.CompareTag("Cub Rosu"))
+        {
+            speed = -1;
         }
         //else if (other.gameObject.CompareTag("Cilindru"))
         //{
