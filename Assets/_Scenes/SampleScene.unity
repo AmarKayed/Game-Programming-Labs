@@ -234,7 +234,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b84a6dae0c8ea34c80a2907db565269, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
   endGameText: {fileID: 616261985}
 --- !u!54 &65059818
 Rigidbody:
@@ -445,6 +444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreCard: {fileID: 1138189168}
   timeCard: {fileID: 1260031107}
+  endGameCard: {fileID: 616261983}
 --- !u!4 &401462983
 Transform:
   m_ObjectHideFlags: 0
@@ -678,7 +678,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -10.639099, y: -38.146088, z: -94.83734, w: -53.678345}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

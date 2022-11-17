@@ -6,7 +6,7 @@ using TMPro;
 
 public class Sphere_Controller : MonoBehaviour
 {
-    public float speed;
+    public static float speed;
     Rigidbody rb;
     private static int numar = 0;
     public TextMeshProUGUI endGameText;
@@ -14,6 +14,7 @@ public class Sphere_Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        speed = 20;
         rb = GetComponent<Rigidbody>();
         Game_Manager.Generate_Cube();
     }
@@ -52,10 +53,11 @@ public class Sphere_Controller : MonoBehaviour
             {
                 speed *= -1;
             }
-            if(numar == 10)
+            if(numar == 3)
             {
-                speed = 0;
-                endGameText.gameObject.SetActive(true);
+                //speed = 0;
+                //endGameText.gameObject.SetActive(true);
+                Game_Manager.On_End_Game();
             }
         }
         

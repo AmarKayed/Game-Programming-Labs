@@ -12,12 +12,18 @@ public class Game_Manager : MonoBehaviour
     public GameObject scoreCard;
     public GameObject timeCard;
     private static TextMeshProUGUI score;
-    private float time = 0.0f;
+    private static TextMeshProUGUI timeText;
+    private static float time = 0.0f;
+    public GameObject endGameCard;
+    public static TextMeshProUGUI endGameText;
+
     // Start is called before the first frame update
     void Start()
     {
         score = scoreCard.GetComponent<TextMeshProUGUI>();
         score.text = "Score: 0";
+        endGameText = endGameCard.GetComponent<TextMeshProUGUI>();
+        timeText = timeCard.GetComponent<TextMeshProUGUI>();
         StartCoroutine(incrementTime());
     }
 
@@ -60,5 +66,34 @@ public class Game_Manager : MonoBehaviour
         // Pentru cazuri mai complicate folosim switch  
         string cubeType = probability == 0 ? "Red Cube" : "Cube";
         GameObject cubeInstance = Instantiate(Resources.Load(cubeType, typeof(GameObject)), position, Quaternion.identity) as GameObject;
+    }
+
+    public static void On_End_Game()
+    {
+
+        Sphere_Controller.speed = 0;
+        string endGameString;
+        if (PlayerPrefs.HasKey("BestTime"))
+        {
+            if(time < PlayerPrefs.GetFloat("BestTime"))
+            {
+                endGameString = $"New Best Time: {timeText.text}";
+                PlayerPrefs.SetFloat("BestTime", time);
+            }
+            else
+            {
+                endGameString = $"Your time: {timeText.text}\nBest time: {PlayerPrefs.GetFloat("BestTime")}.2f";
+            }
+        }
+        else
+        {
+            endGameString = $"New Best Time: {timeText.text}";
+            PlayerPrefs.SetFloat("BestTime", time);
+        }
+
+        endGameText.text = endGameString;
+        endGameText.gameObject.SetActive(true);
+        score.gameObject.SetActive(false);
+        timeText.gameObject.SetActive(false);
     }
 }
